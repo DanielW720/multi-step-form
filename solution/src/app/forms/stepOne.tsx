@@ -24,7 +24,7 @@ export default function StepOne() {
     if (currentErrors.name || currentErrors.email || currentErrors.phone) {
       console.log(currentErrors);
       setErrors(currentErrors);
-    } else if (errors?.name || errors?.email || errors?.phone) {
+    } else if (errors.name || errors.email || errors.phone) {
       setErrors(defaultFormErros);
     }
     console.log(data);
@@ -37,65 +37,77 @@ export default function StepOne() {
         Please provide your name, email adress, and phone number.
       </p>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
-        <label htmlFor="name" className="text-sm text-[#02295a] font-semibold ">
-          Name
-        </label>
+        <div className="flex justify-between items-center mt-4 mb-1">
+          <label
+            htmlFor="name"
+            className="text-xs text-[#02295a] font-semibold"
+          >
+            Name
+          </label>
+          {errors.name && (
+            <span className="text-[#ed3548] font-extrabold text-xs">
+              {errors.name}
+            </span>
+          )}
+        </div>
         <input
           autoComplete="off"
           type="text"
           id="name"
           placeholder="e.g. Stephen King"
-          required
           {...register("name")}
-          className="border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2"
+          className={`border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2 outline-none ${
+            errors.name && "border-[#ed3548]"
+          }`}
         />
-        {errors?.name && (
-          <span className="text-[#ed3548] font-semibold text-sm">
-            {errors.name}
-          </span>
-        )}
 
-        <label
-          htmlFor="email"
-          className="text-sm text-[#02295a] font-semibold mt-4"
-        >
-          Email Address
-        </label>
+        <div className="flex justify-between items-center mt-4 mb-1">
+          <label
+            htmlFor="email"
+            className="text-xs text-[#02295a] font-semibold"
+          >
+            Email Address
+          </label>
+          {errors.email && (
+            <span className="text-[#ed3548] font-extrabold text-xs">
+              {errors.email}
+            </span>
+          )}
+        </div>
         <input
           autoComplete="off"
           type="email"
           id="email"
           placeholder="e.g. stephenking@lorem.com"
-          required
           {...register("email")}
-          className="border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2"
+          className={`border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2 outline-none ${
+            errors.email && "border-[#ed3548]"
+          }`}
         />
-        {errors?.email && (
-          <span className="text-[#ed3548] font-semibold text-sm">
-            {errors.email}
-          </span>
-        )}
 
-        <label
-          htmlFor="phone"
-          className="text-sm text-[#02295a] font-semibold mt-4"
-        >
-          Phone
-        </label>
+        <div className="flex justify-between items-center mt-4 mb-1">
+          <label
+            htmlFor="phone"
+            className="text-xs text-[#02295a] font-semibold"
+          >
+            Phone Number
+          </label>
+          {errors.phone && (
+            <span className="text-[#ed3548] font-extrabold text-xs">
+              {errors.phone}
+            </span>
+          )}
+        </div>
         <input
           autoComplete="off"
           type="number"
           id="phone"
           placeholder="e.g. +1 1234 567 890"
-          required
           {...register("phone")}
-          className="border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2"
+          className={`border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2 outline-none ${
+            errors.phone && "border-[#ed3548]"
+          }`}
         />
-        {errors?.phone && (
-          <span className="text-[#ed3548] font-semibold text-sm">
-            {errors.phone}
-          </span>
-        )}
 
         <NextStep onSubmit={onSubmit} />
       </form>
@@ -128,7 +140,7 @@ function validateForm(data: Inputs) {
   if (!data.phone.trim()) {
     errors.phone = "Phone number is required";
   } else if (!phoneRegex.test(data.phone)) {
-    errors.phone = "Invalid phone number format";
+    errors.phone = "Invalid format";
   }
 
   return errors;
