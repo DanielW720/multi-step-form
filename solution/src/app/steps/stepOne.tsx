@@ -23,10 +23,10 @@ export default function StepOne({ nextStep }: { nextStep: () => void }) {
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     // Validate form inputs. If not valid, set error state and terminate submission. If valid, set error state to default, continue submission and go to next step
     const currentErrors = validateForm(data);
-    if (currentErrors.name || currentErrors.email || currentErrors.phone) {
-      setErrors(currentErrors);
-      return;
-    }
+    // if (currentErrors.name || currentErrors.email || currentErrors.phone) {
+    //   setErrors(currentErrors);
+    //   return;
+    // }
     // Reset error state to default in case it's not already in default state
     setErrors(defaultFormErrors);
     nextStep();
