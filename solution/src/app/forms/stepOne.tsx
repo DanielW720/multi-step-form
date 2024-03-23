@@ -14,26 +14,28 @@ type FormError = {
   phone: string | null;
 };
 
-const defaultFormErros = { name: null, email: null, phone: null };
+const defaultFormErrors = { name: null, email: null, phone: null };
 
-export default function StepOne() {
+export default function StepOne({ nextStep }: { nextStep: () => void }) {
   const { register, handleSubmit } = useForm<Inputs>();
-  const [errors, setErrors] = useState<FormError>(defaultFormErros);
+  const [errors, setErrors] = useState<FormError>(defaultFormErrors);
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    // Validate form inputs. If not valid, set error state and terminate submission. If valid, set error state to default, continue submission and go to next step
     const currentErrors = validateForm(data);
     if (currentErrors.name || currentErrors.email || currentErrors.phone) {
       console.log(currentErrors);
       setErrors(currentErrors);
-    } else if (errors.name || errors.email || errors.phone) {
-      setErrors(defaultFormErros);
+      return;
     }
-    console.log(data);
+    // Reset error state to default in case it's not already in default state
+    setErrors(defaultFormErrors);
+    nextStep();
   };
 
   return (
     <div>
-      <h1 className="text-[#02295a] text-3xl font-bold">Personal info</h1>
-      <p className="text-[#9699ab] my-4">
+      <h1 className="text-marineBlue text-2xl font-bold">Personal info</h1>
+      <p className="text-[#9699ab] my-3">
         Please provide your name, email adress, and phone number.
       </p>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
@@ -109,7 +111,11 @@ export default function StepOne() {
           }`}
         />
 
-        <NextStep onSubmit={onSubmit} />
+        <NextStep
+          onSubmit={(e) => {
+            onSubmit(e);
+          }}
+        />
       </form>
     </div>
   );

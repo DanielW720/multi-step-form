@@ -19,13 +19,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ubuntu.className} w-screen min-h-screen text-gray-900 flex flex-col items-center justify-center bg-[#bfe2fd]`}
+        className={`${ubuntu.className} w-screen min-h-screen text-gray-900 flex flex-col items-center bg-background`}
       >
         <div className="absolute inset-0 h-44 -z-10">
           <Image
             src={bgSidebarMobile}
             alt="Background mobile"
             fill
+            priority
             className="object-cover"
           />
         </div>
