@@ -21,7 +21,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} w-screen min-h-screen text-gray-900 flex flex-col items-center justify-center bg-[#bfe2fd]`}
       >
-        <div className="absolute inset-0 h-44">
+        <div className="absolute inset-0 h-44 -z-10">
           <Image
             src={bgSidebarMobile}
             alt="Background mobile"
@@ -30,11 +30,6 @@ export default function RootLayout({
           />
         </div>
         {children}
-        <div className="bg-white h-24 w-screen absolute bottom-0 flex justify-end items-center px-4">
-          <button className="rounded-md text-white bg-[#02295a] p-3">
-            Next Step
-          </button>
-        </div>
       </body>
     </html>
   );
