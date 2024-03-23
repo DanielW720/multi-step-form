@@ -19,11 +19,11 @@ const defaultFormErrors = { name: null, email: null, phone: null };
 export default function StepOne({ nextStep }: { nextStep: () => void }) {
   const { register, handleSubmit } = useForm<Inputs>();
   const [errors, setErrors] = useState<FormError>(defaultFormErrors);
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     // Validate form inputs. If not valid, set error state and terminate submission. If valid, set error state to default, continue submission and go to next step
     const currentErrors = validateForm(data);
     if (currentErrors.name || currentErrors.email || currentErrors.phone) {
-      console.log(currentErrors);
       setErrors(currentErrors);
       return;
     }
@@ -47,7 +47,7 @@ export default function StepOne({ nextStep }: { nextStep: () => void }) {
             Name
           </label>
           {errors.name && (
-            <span className="text-[#ed3548] font-extrabold text-xs">
+            <span className="text-strawberryRed font-extrabold text-xs">
               {errors.name}
             </span>
           )}
@@ -59,7 +59,7 @@ export default function StepOne({ nextStep }: { nextStep: () => void }) {
           placeholder="e.g. Stephen King"
           {...register("name")}
           className={`border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2 outline-none ${
-            errors.name && "border-[#ed3548]"
+            errors.name && "border-strawberryRed"
           }`}
         />
 
@@ -71,7 +71,7 @@ export default function StepOne({ nextStep }: { nextStep: () => void }) {
             Email Address
           </label>
           {errors.email && (
-            <span className="text-[#ed3548] font-extrabold text-xs">
+            <span className="text-strawberryRed font-extrabold text-xs">
               {errors.email}
             </span>
           )}
@@ -83,7 +83,7 @@ export default function StepOne({ nextStep }: { nextStep: () => void }) {
           placeholder="e.g. stephenking@lorem.com"
           {...register("email")}
           className={`border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2 outline-none ${
-            errors.email && "border-[#ed3548]"
+            errors.email && "border-strawberryRed"
           }`}
         />
 
@@ -95,7 +95,7 @@ export default function StepOne({ nextStep }: { nextStep: () => void }) {
             Phone Number
           </label>
           {errors.phone && (
-            <span className="text-[#ed3548] font-extrabold text-xs">
+            <span className="text-strawberryRed font-extrabold text-xs">
               {errors.phone}
             </span>
           )}
@@ -107,15 +107,13 @@ export default function StepOne({ nextStep }: { nextStep: () => void }) {
           placeholder="e.g. +1 1234 567 890"
           {...register("phone")}
           className={`border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2 outline-none ${
-            errors.phone && "border-[#ed3548]"
+            errors.phone && "border-strawberryRed"
           }`}
         />
 
-        <NextStep
-          onSubmit={(e) => {
-            onSubmit(e);
-          }}
-        />
+        <button type="submit">
+          <NextStep />
+        </button>
       </form>
     </div>
   );
