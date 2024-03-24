@@ -46,6 +46,7 @@ export default function Home() {
             subscription={subscription}
             nextStep={() => setStep(5)}
             previousStep={() => setStep(3)}
+            goToStepTwo={() => setStep(2)}
           />
         )}
         {step === 5 && <StepFive />}
