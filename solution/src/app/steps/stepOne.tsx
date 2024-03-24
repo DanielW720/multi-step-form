@@ -1,6 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import NextStep from "./nextStep";
 import { useState } from "react";
+import { Subscription } from "../globals/types";
 
 type Inputs = {
   name: string;
@@ -16,8 +17,22 @@ type FormError = {
 
 const defaultFormErrors = { name: null, email: null, phone: null };
 
-export default function StepOne({ nextStep }: { nextStep: () => void }) {
-  const { register, handleSubmit } = useForm<Inputs>();
+export default function StepOne({
+  subscription,
+  setSubscription,
+  nextStep,
+}: {
+  subscription: Subscription;
+  setSubscription: (prevState: Subscription) => void;
+  nextStep: () => void;
+}) {
+  const { register, handleSubmit } = useForm<Inputs>({
+    defaultValues: {
+      name: subscription.personalInfo.name,
+      email: subscription.personalInfo.email,
+      phone: subscription.personalInfo.phone,
+    },
+  });
   const [errors, setErrors] = useState<FormError>(defaultFormErrors);
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
@@ -29,6 +44,14 @@ export default function StepOne({ nextStep }: { nextStep: () => void }) {
     // }
     // Reset error state to default in case it's not already in default state
     setErrors(defaultFormErrors);
+    setSubscription({
+      ...subscription,
+      personalInfo: {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+      },
+    });
     nextStep();
   };
 
