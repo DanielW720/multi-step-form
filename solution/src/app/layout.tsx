@@ -4,7 +4,10 @@ import "./globals.css";
 import Image from "next/image";
 import bgSidebarMobile from "../../public/images/bg-sidebar-mobile.svg";
 
-const ubuntu = Ubuntu({ subsets: ["latin"], weight: ["300", "400", "700"] });
+const ubuntu = Ubuntu({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Multi Step Form - Frontendmentor challange",

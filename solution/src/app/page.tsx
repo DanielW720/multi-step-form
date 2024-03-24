@@ -6,9 +6,8 @@ import StepTwo from "./steps/stepTwo";
 import StepThree from "./steps/stepThree";
 import StepFour from "./steps/stepFour";
 import StepFive from "./steps/stepFive";
-import { Subscription } from "./globals/types";
-
-type Step = 1 | 2 | 3 | 4 | 5;
+import { Step, Subscription } from "./globals/types";
+import StepView from "./steps/stepView";
 
 export default function Home() {
   const [step, setStep] = useState<Step>(1);
@@ -17,21 +16,7 @@ export default function Home() {
 
   return (
     <main className="px-6">
-      <div className="flex justify-center h-24 items-center">
-        {([1, 2, 3, 4] as Step[]).map((num) => (
-          <button
-            key={num}
-            onClick={() => setStep(num)}
-            className={`h-8 w-8 flex items-center font-bold justify-center mx-2 rounded-full border-white border-[1px] ${
-              num === step || (num === 4 && step === 5)
-                ? "bg-lightBlue text-marineBlue"
-                : "text-white"
-            }`}
-          >
-            {num}
-          </button>
-        ))}
-      </div>
+      <StepView step={step} setStep={setStep} />
       <div className="bg-white rounded-lg px-6 py-8">
         {step === 1 && (
           <StepOne
@@ -43,6 +28,7 @@ export default function Home() {
         {step === 2 && (
           <StepTwo
             subscription={subscription}
+            setSubscription={setSubscription}
             nextStep={() => setStep(3)}
             previousStep={() => setStep(1)}
           />
@@ -76,17 +62,27 @@ const defaultSubcription: Subscription = {
   billingCycle: "Monthly",
   plan: {
     specialOffer: "2 months free",
+    active: "arcade",
     arcade: {
       monthly: 9,
       yearly: 90,
+      displayName: "Arcade",
+      icon: "/images/icon-arcade.svg",
+      alt: "Arcade icon",
     },
     advanced: {
       monthly: 12,
       yearly: 120,
+      displayName: "Advanced",
+      icon: "/images/icon-advanced.svg",
+      alt: "Advanced icon",
     },
     pro: {
       monthly: 15,
       yearly: 150,
+      displayName: "Pro",
+      icon: "/images/icon-pro.svg",
+      alt: "Pro icon",
     },
   },
   addOns: {

@@ -7,17 +7,27 @@ export type Subscription = {
   billingCycle: "Monthly" | "Yearly";
   plan: {
     specialOffer: string;
+    active: "arcade" | "advanced" | "pro";
     arcade: {
       monthly: 9;
       yearly: 90;
+      displayName: string;
+      icon: string;
+      alt: string;
     };
     advanced: {
       monthly: 12;
       yearly: 120;
+      displayName: string;
+      icon: string;
+      alt: string;
     };
     pro: {
       monthly: 15;
       yearly: 150;
+      displayName: string;
+      icon: string;
+      alt: string;
     };
   };
   addOns: {
@@ -50,3 +60,5 @@ export type Subscription = {
     };
   };
 };
+
+export type Step = 1 | 2 | 3 | 4 | 5;
