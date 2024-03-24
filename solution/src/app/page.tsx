@@ -36,6 +36,7 @@ export default function Home() {
         {step === 3 && (
           <StepThree
             subscription={subscription}
+            setSubscription={setSubscription}
             nextStep={() => setStep(4)}
             previousStep={() => setStep(2)}
           />
@@ -87,7 +88,7 @@ const defaultSubcription: Subscription = {
   },
   addOns: {
     onlineService: {
-      active: false,
+      active: true,
       displayName: "Online service",
       description: "Access to multiplayer games",
       price: {

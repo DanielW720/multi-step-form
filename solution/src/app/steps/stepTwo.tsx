@@ -118,6 +118,7 @@ function Switch({
       </h3>
       <RadixSwitch.Root
         className="w-[42px] h-[22px] bg-blackA6 rounded-full relative data-[state=checked] bg-marineBlue outline-none cursor-default mx-4"
+        checked={!monthlyBilling}
         onCheckedChange={onSwitchClick}
       >
         <RadixSwitch.Thumb className="block w-[15px] h-[15px] bg-white rounded-full transition-transform duration-100 translate-x-[4px] will-change-transform data-[state=checked]:translate-x-[22px]" />
