@@ -13,6 +13,7 @@ function StepFour({
   nextStep: () => void;
   goToStepTwo: () => void;
 }) {
+  // Get values...
   const billingCycle = subscription.billingCycle.toLowerCase() as
     | "monthly"
     | "yearly";
