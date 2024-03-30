@@ -13,28 +13,75 @@ function StepFour({
   nextStep: () => void;
   goToStepTwo: () => void;
 }) {
+  const billingCycle = subscription.billingCycle.toLowerCase() as
+    | "monthly"
+    | "yearly";
+  const billingCycleAbbreviation = billingCycle === "monthly" ? "mo" : "yr";
+  const plan = subscription.plan.active;
+  const planPrice = subscription.plan[plan][billingCycle];
+  const onlineServicePrice =
+    subscription.addOns.onlineService.price[billingCycle];
+  const largerStoragePrice =
+    subscription.addOns.largerStorage.price[billingCycle];
+  const customizableProfilePrice =
+    subscription.addOns.customizableProfile.price[billingCycle];
+  let total = planPrice;
+  if (subscription.addOns.onlineService.active) total += onlineServicePrice;
+  if (subscription.addOns.largerStorage.active) total += largerStoragePrice;
+  if (subscription.addOns.customizableProfile.active)
+    total += customizableProfilePrice;
+
   return (
     <div className="text-coolGray font-[500]">
       <h1 className="text-2xl text-marineBlue font-bold">Finishing up</h1>
       <p className="text-coolGray font-[500] my-4">
         Double-check everything looks OK before confirming.
       </p>
-      <div className="rounded-md bg-alabaster p-3">
-        <ul>
-          <li className="flex items-center">
-            <div>
-              <p className="text-marineBlue font-bold">
-                {`${capitalizeFirstLetter(subscription.plan.active)} (${
-                  subscription.billingCycle
-                })`}
-              </p>
-              <button onClick={goToStepTwo} className="underline">
-                Change
-              </button>
-            </div>
-            <p className="ml-auto text-marineBlue font-bold">$9/mo</p>
+      <ul className="bg-alabaster rounded-md p-3">
+        <li className="flex items-center">
+          <div>
+            <p className="text-marineBlue font-bold">
+              {`${capitalizeFirstLetter(subscription.plan.active)} (${
+                subscription.billingCycle
+              })`}
+            </p>
+            <button onClick={goToStepTwo} className="underline">
+              Change
+            </button>
+          </div>
+          <p className="ml-auto text-marineBlue font-bold">{`$${planPrice}/${billingCycleAbbreviation}`}</p>
+        </li>
+        <li className="mt-4">
+          <hr className="text-marineBlue h-1 w-full" />
+        </li>
+        {subscription.addOns.onlineService.active && (
+          <li className="flex items-center mt-4">
+            <p className="text-coolGray">Online service</p>
+            <p className="ml-auto text-marineBlue/75 font-bold">
+              {`+$${onlineServicePrice}/${billingCycleAbbreviation}`}
+            </p>
           </li>
-        </ul>
+        )}
+        {subscription.addOns.largerStorage.active && (
+          <li className="flex items-center mt-4">
+            <p className="text-coolGray">Larger storage</p>
+            <p className="ml-auto text-marineBlue/75 font-bold">
+              {`+$${largerStoragePrice}/${billingCycleAbbreviation}`}
+            </p>
+          </li>
+        )}
+        {subscription.addOns.customizableProfile.active && (
+          <li className="flex items-center mt-4">
+            <p className="text-coolGray">Customizable profile</p>
+            <p className="ml-auto text-marineBlue/75 font-bold">
+              {`+$${customizableProfilePrice}/${billingCycleAbbreviation}`}
+            </p>
+          </li>
+        )}
+      </ul>
+      <div className="flex items-center px-4 mt-6">
+        <p>Total (per {billingCycle === "monthly" ? "month" : "year"})</p>
+        <p className="ml-auto text-purplishBlue font-semibold">{`+$${total}/${billingCycleAbbreviation}`}</p>
       </div>
       <NextStep
         previousStep={previousStep}

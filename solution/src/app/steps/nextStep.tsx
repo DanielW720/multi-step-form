@@ -15,7 +15,9 @@ export default function NextStep({
         </button>
       ) : null}
       <div
-        className="rounded-md ml-auto text-white bg-[#02295a] px-4 py-3"
+        className={`rounded-md ml-auto text-white px-4 py-3 ${
+          confirm ? "bg-purplishBlue" : "bg-marineBlue"
+        }`}
         onClick={nextStep}
       >
         {confirm ? "Confirm" : "Next Step"}
