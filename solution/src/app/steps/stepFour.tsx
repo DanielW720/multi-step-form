@@ -2,7 +2,7 @@ import React from "react";
 import NextStep from "./nextStep";
 import { Subscription } from "../globals/types";
 
-function StepFour({
+export default function StepFour({
   subscription,
   previousStep,
   nextStep,
@@ -17,19 +17,13 @@ function StepFour({
     | "monthly"
     | "yearly";
   const billingCycleAbbreviation = billingCycle === "monthly" ? "mo" : "yr";
-  const plan = subscription.plan.active;
-  const planPrice = subscription.plan[plan][billingCycle];
-  const onlineServicePrice =
-    subscription.addOns.onlineService.price[billingCycle];
-  const largerStoragePrice =
-    subscription.addOns.largerStorage.price[billingCycle];
-  const customizableProfilePrice =
-    subscription.addOns.customizableProfile.price[billingCycle];
-  let total = planPrice;
-  if (subscription.addOns.onlineService.active) total += onlineServicePrice;
-  if (subscription.addOns.largerStorage.active) total += largerStoragePrice;
-  if (subscription.addOns.customizableProfile.active)
-    total += customizableProfilePrice;
+  const [
+    planPrice,
+    onlineServicePrice,
+    largerStoragePrice,
+    customizableProfilePrice,
+    total,
+  ] = getPrices(subscription, billingCycle);
 
   return (
     <div className="text-coolGray font-[500]">
@@ -92,8 +86,33 @@ function StepFour({
   );
 }
 
-export default StepFour;
-
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function getPrices(
+  subscription: Subscription,
+  billingCycle: "monthly" | "yearly"
+) {
+  const plan = subscription.plan.active;
+  const planPrice = subscription.plan[plan][billingCycle];
+  const onlineServicePrice =
+    subscription.addOns.onlineService.price[billingCycle];
+  const largerStoragePrice =
+    subscription.addOns.largerStorage.price[billingCycle];
+  const customizableProfilePrice =
+    subscription.addOns.customizableProfile.price[billingCycle];
+  let total = planPrice;
+  if (subscription.addOns.onlineService.active) total += onlineServicePrice;
+  if (subscription.addOns.largerStorage.active) total += largerStoragePrice;
+  if (subscription.addOns.customizableProfile.active)
+    total += customizableProfilePrice;
+
+  return [
+    planPrice,
+    onlineServicePrice,
+    largerStoragePrice,
+    customizableProfilePrice,
+    total,
+  ];
 }
