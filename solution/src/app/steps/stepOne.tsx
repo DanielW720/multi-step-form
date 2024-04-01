@@ -85,7 +85,7 @@ export default function StepOne({
             id="name"
             placeholder="e.g. Stephen King"
             {...register("name")}
-            className={`border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2 outline-none ${
+            className={`border-[#9699ab] placeholder:text-coolGray border-[1px] rounded-[4px] font-semibold py-1 px-2 outline-none ${
               errors.name && "border-strawberryRed"
             }`}
           />
@@ -108,7 +108,7 @@ export default function StepOne({
             id="email"
             placeholder="e.g. stephenking@lorem.com"
             {...register("email")}
-            className={`border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2 outline-none ${
+            className={`border-[#9699ab] placeholder:text-coolGray border-[1px] rounded-[4px] font-semibold py-1 px-2 outline-none ${
               errors.email && "border-strawberryRed"
             }`}
           />
@@ -131,7 +131,7 @@ export default function StepOne({
             id="phone"
             placeholder="e.g. +1 1234 567 890"
             {...register("phone")}
-            className={`border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2 outline-none ${
+            className={`border-[#9699ab] placeholder:text-coolGray border-[1px] rounded-[4px] font-semibold py-1 px-2 outline-none ${
               errors.phone && "border-strawberryRed"
             }`}
           />

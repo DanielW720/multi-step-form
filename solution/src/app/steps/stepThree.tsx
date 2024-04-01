@@ -53,6 +53,7 @@ function AddOn({
   subscription: Subscription;
   setSubscription: (subscription: Subscription) => void;
 }) {
+  const active = subscription.addOns[addOn].active;
   const monthlyBilling = subscription.billingCycle === "Monthly";
   const price = `+$${
     subscription.addOns[addOn].price[monthlyBilling ? "monthly" : "yearly"]
@@ -86,7 +87,9 @@ function AddOn({
 
   return (
     <li
-      className="border-[1px] border-coolGray rounded-md p-2 flex items-center xs:p-4"
+      className={`border-[1px] hover:cursor-pointer hover:border-marineBlue rounded-md p-2 flex items-center xs:p-4 ${
+        active ? "border-marineBlue bg-alabaster" : "border-coolGray"
+      }`}
       onClick={onAddOnClick}
     >
       <div

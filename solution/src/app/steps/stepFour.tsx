@@ -40,7 +40,10 @@ export default function StepFour({
                   subscription.billingCycle
                 })`}
               </p>
-              <button onClick={goToStepTwo} className="underline">
+              <button
+                onClick={goToStepTwo}
+                className="underline hover:text-purplishBlue transition-colors"
+              >
                 Change
               </button>
             </div>

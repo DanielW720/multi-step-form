@@ -32,7 +32,7 @@ export default function StepTwo({
   };
 
   return (
-    <div className="max-h-[calc(100vh-15rem)] overflow-y-scroll sm:flex sm:flex-col justify-between h-full">
+    <div className="max-h-[calc(100vh-15rem)] sm:overflow-y-auto overflow-y-scroll sm:flex sm:flex-col justify-between h-full">
       <div>
         <h1 className="font-bold text-marineBlue text-2xl">Select your plan</h1>
         <p className="text-coolGray mt-2 mb-4 sm:mb-8">
@@ -83,7 +83,7 @@ function PlanListing({
   return (
     <li
       onClick={() => setSubscription(plan)}
-      className={`flex flex-row sm:flex-col items-start justify-start border-[1px] rounded-md p-4 sm:px-3 sm:py-4 ${
+      className={`flex flex-row sm:flex-col hover:cursor-pointer hover:border-marineBlue items-start justify-start border-[1px] rounded-md p-4 sm:px-3 sm:py-4 transition-colors ${
         isActive ? "border-marineBlue bg-alabaster" : "border-coolGray"
       }`}
     >
