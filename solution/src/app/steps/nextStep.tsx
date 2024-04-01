@@ -8,7 +8,7 @@ export default function NextStep({
   confirm?: boolean;
 }) {
   return (
-    <div className="bg-white h-20 fixed bottom-0 left-0 w-screen flex justify-between items-center px-4 text-sm">
+    <div className="bg-white h-20 fixed bottom-0 left-0 w-screen flex justify-between items-center px-4 text-sm sm:static sm:w-full sm:h-fit">
       {previousStep ? (
         <button className="text-coolGray font-bold" onClick={previousStep}>
           Go Back

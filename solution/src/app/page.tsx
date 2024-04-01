@@ -15,9 +15,9 @@ export default function Home() {
     useState<Subscription>(defaultSubcription);
 
   return (
-    <main className="px-6">
+    <main className="px-6 relative sm:bg-white sm:flex sm:py-6 sm:rounded-xl sm:h-[600px] sm:w-full max-w-[900px] sm:justify-between">
       <StepView step={step} setStep={setStep} />
-      <div className="bg-white rounded-lg px-6 py-8">
+      <div className="bg-white rounded-lg px-6 py-8 max-w-[500px]">
         {step === 1 && (
           <StepOne
             subscription={subscription}

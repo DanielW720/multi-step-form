@@ -15,6 +15,7 @@ const config: Config = {
       },
       screens: {
         xs: "374px",
+        sm: "700px",
       },
       colors: {
         // Primary

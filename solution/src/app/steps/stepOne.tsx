@@ -56,85 +56,88 @@ export default function StepOne({
   };
 
   return (
-    <div>
-      <h1 className="text-marineBlue text-2xl font-bold">Personal info</h1>
-      <p className="text-[#9699ab] my-3">
-        Please provide your name, email adress, and phone number.
-      </p>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
-        <div className="flex justify-between items-center mt-4 mb-1">
-          <label
-            htmlFor="name"
-            className="text-xs text-[#02295a] font-semibold"
-          >
-            Name
-          </label>
-          {errors.name && (
-            <span className="text-strawberryRed font-extrabold text-xs">
-              {errors.name}
-            </span>
-          )}
+    <div className="h-full relative">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="h-full flex flex-col justify-between"
+      >
+        <div className="flex flex-col">
+          <h1 className="text-marineBlue text-2xl font-bold">Personal info</h1>
+          <p className="text-[#9699ab] my-3">
+            Please provide your name, email adress, and phone number.
+          </p>
+          <div className="flex justify-between items-center mt-4 mb-1">
+            <label
+              htmlFor="name"
+              className="text-xs text-[#02295a] font-semibold"
+            >
+              Name
+            </label>
+            {errors.name && (
+              <span className="text-strawberryRed font-extrabold text-xs">
+                {errors.name}
+              </span>
+            )}
+          </div>
+          <input
+            autoComplete="off"
+            type="text"
+            id="name"
+            placeholder="e.g. Stephen King"
+            {...register("name")}
+            className={`border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2 outline-none ${
+              errors.name && "border-strawberryRed"
+            }`}
+          />
+          <div className="flex justify-between items-center mt-4 mb-1">
+            <label
+              htmlFor="email"
+              className="text-xs text-[#02295a] font-semibold"
+            >
+              Email Address
+            </label>
+            {errors.email && (
+              <span className="text-strawberryRed font-extrabold text-xs">
+                {errors.email}
+              </span>
+            )}
+          </div>
+          <input
+            autoComplete="off"
+            type="email"
+            id="email"
+            placeholder="e.g. stephenking@lorem.com"
+            {...register("email")}
+            className={`border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2 outline-none ${
+              errors.email && "border-strawberryRed"
+            }`}
+          />
+          <div className="flex justify-between items-center mt-4 mb-1">
+            <label
+              htmlFor="phone"
+              className="text-xs text-[#02295a] font-semibold"
+            >
+              Phone Number
+            </label>
+            {errors.phone && (
+              <span className="text-strawberryRed font-extrabold text-xs">
+                {errors.phone}
+              </span>
+            )}
+          </div>
+          <input
+            autoComplete="off"
+            type="number"
+            id="phone"
+            placeholder="e.g. +1 1234 567 890"
+            {...register("phone")}
+            className={`border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2 outline-none ${
+              errors.phone && "border-strawberryRed"
+            }`}
+          />
         </div>
-        <input
-          autoComplete="off"
-          type="text"
-          id="name"
-          placeholder="e.g. Stephen King"
-          {...register("name")}
-          className={`border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2 outline-none ${
-            errors.name && "border-strawberryRed"
-          }`}
-        />
 
-        <div className="flex justify-between items-center mt-4 mb-1">
-          <label
-            htmlFor="email"
-            className="text-xs text-[#02295a] font-semibold"
-          >
-            Email Address
-          </label>
-          {errors.email && (
-            <span className="text-strawberryRed font-extrabold text-xs">
-              {errors.email}
-            </span>
-          )}
-        </div>
-        <input
-          autoComplete="off"
-          type="email"
-          id="email"
-          placeholder="e.g. stephenking@lorem.com"
-          {...register("email")}
-          className={`border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2 outline-none ${
-            errors.email && "border-strawberryRed"
-          }`}
-        />
-
-        <div className="flex justify-between items-center mt-4 mb-1">
-          <label
-            htmlFor="phone"
-            className="text-xs text-[#02295a] font-semibold"
-          >
-            Phone Number
-          </label>
-          {errors.phone && (
-            <span className="text-strawberryRed font-extrabold text-xs">
-              {errors.phone}
-            </span>
-          )}
-        </div>
-        <input
-          autoComplete="off"
-          type="number"
-          id="phone"
-          placeholder="e.g. +1 1234 567 890"
-          {...register("phone")}
-          className={`border-[#9699ab] border-[1px] rounded-[4px] font-semibold text-[#9699ab] py-1 px-2 outline-none ${
-            errors.phone && "border-strawberryRed"
-          }`}
-        />
-
-        <button type="submit">
+        <button type="submit" className="w-full">
           <NextStep />
         </button>
       </form>

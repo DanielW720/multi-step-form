@@ -22,9 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ubuntu.className} w-screen min-h-screen text-gray-900 flex flex-col items-center bg-bgMagnolia`}
+        className={`${ubuntu.className} px-4 sm:justify-center w-screen min-h-screen text-gray-900 flex flex-col items-center bg-bgMagnolia`}
       >
-        <div className="absolute inset-0 h-44 -z-10">
+        <div className="absolute inset-0 h-44 -z-10 sm:hidden">
           <Image
             src={bgSidebarMobile}
             alt="Background mobile"
