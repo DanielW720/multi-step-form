@@ -15,28 +15,30 @@ export default function StepThree({
   nextStep: () => void;
 }) {
   return (
-    <div>
-      <h1 className="text-marineBlue text-2xl font-bold">Pick add-ons</h1>
-      <p className="text-coolGray font-[500] my-4">
-        Add-ons help enhance your gaming experience.
-      </p>
-      <ul className="grid grid-cols-1 gap-3">
-        <AddOn
-          addOn="onlineService"
-          subscription={subscription}
-          setSubscription={setSubscription}
-        />
-        <AddOn
-          addOn="largerStorage"
-          subscription={subscription}
-          setSubscription={setSubscription}
-        />
-        <AddOn
-          addOn="customizableProfile"
-          subscription={subscription}
-          setSubscription={setSubscription}
-        />
-      </ul>
+    <div className="sm:flex flex-col justify-between h-full">
+      <div>
+        <h1 className="text-marineBlue text-2xl font-bold">Pick add-ons</h1>
+        <p className="text-coolGray font-[500] my-4 sm:mb-10">
+          Add-ons help enhance your gaming experience.
+        </p>
+        <ul className="grid grid-cols-1 gap-3">
+          <AddOn
+            addOn="onlineService"
+            subscription={subscription}
+            setSubscription={setSubscription}
+          />
+          <AddOn
+            addOn="largerStorage"
+            subscription={subscription}
+            setSubscription={setSubscription}
+          />
+          <AddOn
+            addOn="customizableProfile"
+            subscription={subscription}
+            setSubscription={setSubscription}
+          />
+        </ul>
+      </div>
       <NextStep previousStep={previousStep} nextStep={nextStep} />
     </div>
   );

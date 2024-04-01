@@ -26,7 +26,7 @@ export default function StepOne({
   setSubscription: (prevState: Subscription) => void;
   nextStep: () => void;
 }) {
-  const { register, handleSubmit } = useForm<Inputs>({
+  const { register, handleSubmit, getValues } = useForm<Inputs>({
     defaultValues: {
       name: subscription.personalInfo.name,
       email: subscription.personalInfo.email,
@@ -38,10 +38,10 @@ export default function StepOne({
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     // Validate form inputs. If not valid, set error state and terminate submission. If valid, set error state to default, continue submission and go to next step
     const currentErrors = validateForm(data);
-    // if (currentErrors.name || currentErrors.email || currentErrors.phone) {
-    //   setErrors(currentErrors);
-    //   return;
-    // }
+    if (currentErrors.name || currentErrors.email || currentErrors.phone) {
+      setErrors(currentErrors);
+      return;
+    }
     // Reset error state to default in case it's not already in default state
     setErrors(defaultFormErrors);
     setSubscription({
@@ -137,9 +137,7 @@ export default function StepOne({
           />
         </div>
 
-        <button type="submit" className="w-full">
-          <NextStep />
-        </button>
+        <NextStep />
       </form>
     </div>
   );

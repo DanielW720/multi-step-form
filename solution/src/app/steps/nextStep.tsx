@@ -8,20 +8,23 @@ export default function NextStep({
   confirm?: boolean;
 }) {
   return (
-    <div className="bg-white h-20 fixed bottom-0 left-0 w-screen flex justify-between items-center px-4 text-sm sm:static sm:w-full sm:h-fit">
+    <div
+      className={`bg-white w-screen h-20 fixed bottom-0 left-0 flex justify-between items-center px-4 sm:px-0 text-sm sm:static sm:w-full sm:h-fit`}
+    >
       {previousStep ? (
         <button className="text-coolGray font-bold" onClick={previousStep}>
           Go Back
         </button>
       ) : null}
-      <div
+      <button
+        type={previousStep != undefined ? "button" : "submit"}
         className={`rounded-md ml-auto text-white px-4 py-3 ${
           confirm ? "bg-purplishBlue" : "bg-marineBlue"
         }`}
         onClick={nextStep}
       >
         {confirm ? "Confirm" : "Next Step"}
-      </div>
+      </button>
     </div>
   );
 }

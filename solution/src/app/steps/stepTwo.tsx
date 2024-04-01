@@ -117,7 +117,7 @@ function Switch({
   onSwitchClick: () => void;
 }) {
   return (
-    <div className="rounded-md bg-alabaster flex sm:col-start-1 sm:col-end-4 items-center justify-center py-3 font-[500]">
+    <div className="rounded-md sm:mt-4 bg-alabaster flex sm:col-start-1 sm:col-end-4 items-center justify-center py-3 font-[500]">
       <h3 className={`${monthlyBilling ? "text-marineBlue" : "text-coolGray"}`}>
         Monthly
       </h3>

@@ -16,10 +16,17 @@ function StepFive() {
       <h1 className="text-marineBlue text-2xl font-bold mb-2 mt-6">
         Thank you!
       </h1>
-      <p>Thanks for confirming your subscription!</p>
-      <p>
-        We hope you have fun using our platform. If you ever need support,
-        please feel free to email us at support@loremgaming.com.
+      <span className="sm:hidden">
+        <p>Thanks for confirming your subscription!</p>
+        <p>
+          We hope you have fun using our platform. If you ever need support,
+          please feel free to email us at support@loremgaming.com.
+        </p>
+      </span>
+      <p className="hidden sm:block">
+        Thanks for confirming your subscription! We hope you have fun using our
+        platform. If you ever need support, please feel free to email us at
+        support@loremgaming.com.
       </p>
     </div>
   );

@@ -17,9 +17,8 @@ export default function StepView({
         className="hidden sm:inline object-cover rounded-2xl"
       />
       {([1, 2, 3, 4] as Step[]).map((num) => (
-        <div className="z-10 flex my-3">
+        <div key={num} className="z-10 flex my-3">
           <button
-            key={num}
             onClick={() => setStep(num)}
             className={`h-8 w-8 sm:h-9 sm:w-9 flex items-center font-bold justify-center mx-2 rounded-full border-white border-[1px] ${
               num === step || (num === 4 && step === 5)
@@ -30,8 +29,13 @@ export default function StepView({
             {num}
           </button>
           <div className="hidden sm:block ml-2">
-            <p className="text-xs text-coolGray">{`STEP ${num}`}</p>
-            <p className="text-sm text-white font-bold">{stepData[num - 1]}</p>
+            <p
+              key={`step-${num}`}
+              className="text-xs text-coolGray"
+            >{`STEP ${num}`}</p>
+            <p key={stepData[num - 1]} className="text-sm text-white font-bold">
+              {stepData[num - 1]}
+            </p>
           </div>
         </div>
       ))}
