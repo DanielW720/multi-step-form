@@ -32,29 +32,34 @@ export default function StepTwo({
   };
 
   return (
-    <div className="max-h-[calc(100vh-15rem)] overflow-y-scroll">
-      <h1 className="font-bold text-marineBlue text-2xl">Select your plan</h1>
-      <p className="text-coolGray mt-2 mb-4">
-        You have the option of monthly or yearly billing.
-      </p>
-      <ul className="gap-3 grid grid-cols-1">
-        <PlanListing
-          plan="arcade"
-          subscription={subscription}
-          setSubscription={onClick}
-        />
-        <PlanListing
-          plan="advanced"
-          subscription={subscription}
-          setSubscription={onClick}
-        />
-        <PlanListing
-          plan="pro"
-          subscription={subscription}
-          setSubscription={onClick}
-        />
-        <Switch monthlyBilling={monthlyBilling} onSwitchClick={onSwitchClick} />
-      </ul>
+    <div className="max-h-[calc(100vh-15rem)] overflow-y-scroll sm:flex sm:flex-col justify-between h-full">
+      <div>
+        <h1 className="font-bold text-marineBlue text-2xl">Select your plan</h1>
+        <p className="text-coolGray mt-2 mb-4 sm:mb-8">
+          You have the option of monthly or yearly billing.
+        </p>
+        <ul className="gap-3 grid grid-cols-1 sm:grid-cols-3">
+          <PlanListing
+            plan="arcade"
+            subscription={subscription}
+            setSubscription={onClick}
+          />
+          <PlanListing
+            plan="advanced"
+            subscription={subscription}
+            setSubscription={onClick}
+          />
+          <PlanListing
+            plan="pro"
+            subscription={subscription}
+            setSubscription={onClick}
+          />
+          <Switch
+            monthlyBilling={monthlyBilling}
+            onSwitchClick={onSwitchClick}
+          />
+        </ul>
+      </div>
       <NextStep previousStep={previousStep} nextStep={nextStep} />
     </div>
   );
@@ -78,18 +83,18 @@ function PlanListing({
   return (
     <li
       onClick={() => setSubscription(plan)}
-      className={`flex flex-row items-start justify-start border-[1px] rounded-md p-4 ${
+      className={`flex flex-row sm:flex-col items-start justify-start border-[1px] rounded-md p-4 sm:px-3 sm:py-4 ${
         isActive ? "border-marineBlue bg-alabaster" : "border-coolGray"
       }`}
     >
-      <div className="relative h-10 w-10 ">
+      <div className="relative h-10 w-10">
         <Image
           src={subscription.plan[plan].icon}
           alt={subscription.plan[plan].alt}
           fill
         />
       </div>
-      <div className="px-2">
+      <div className="px-2 sm:mt-10">
         <h2 className="text-marineBlue font-semibold">
           {subscription.plan[plan].displayName}
         </h2>
@@ -112,7 +117,7 @@ function Switch({
   onSwitchClick: () => void;
 }) {
   return (
-    <div className="rounded-md bg-alabaster flex items-center justify-center py-3 font-[500]">
+    <div className="rounded-md bg-alabaster flex sm:col-start-1 sm:col-end-4 items-center justify-center py-3 font-[500]">
       <h3 className={`${monthlyBilling ? "text-marineBlue" : "text-coolGray"}`}>
         Monthly
       </h3>
