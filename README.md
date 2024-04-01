@@ -2,17 +2,11 @@
 
 This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Table of contents
-
-- [The challenge](#the-challenge)
-- [Screenshot](#screenshot)
-- [Links](#links)
-- [Built with](#built-with)
-- [What I learned](#what-i-learned)
-- [Continued development](#continued-development)
-- [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+- [Frontend Mentor - Multi-step form solution](#frontend-mentor---multi-step-form-solution)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+  - [Built with](#built-with)
 
 ## The challenge
 
@@ -30,16 +24,22 @@ Users should be able to:
 
 ## Screenshot
 
-![](./screenshot.jpg)
+**Design:**
+
+<img src="./design/desktop-design-step-2-monthly.jpg" width="70%" height="70%">
+
+<br/>
+
+**Solution:**
+
+<img src="./desktop-step-two.png" width="70%" height="70%">
 
 ## Links
 
 - Solution URL: [Solution](./solution)
 - Live Site URL: [Live site](https://multi-step-form-five-blush.vercel.app/)
 
-## My process
-
-### Built with
+## Built with
 
 - [React](https://reactjs.org/) - JS library
 - [Next.js](https://nextjs.org/) - React framework
