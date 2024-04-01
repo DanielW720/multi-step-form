@@ -127,7 +127,7 @@ export default function StepOne({
           </div>
           <input
             autoComplete="off"
-            type="number"
+            type="tel"
             id="phone"
             placeholder="e.g. +1 1234 567 890"
             {...register("phone")}
